@@ -9,6 +9,10 @@ export function imgUrlPrefixer(
   imgPath: string,
   quality: "low" | "high"
 ): string {
+  if (imgPath === null) {
+    return "https://picsum.photos/200/300/?blur"; // fallback image
+  }
+
   if (quality === "low") {
     return `${TMBD_IMG_PREFIX_LOW_QUALITY}${imgPath}`;
   }
@@ -20,7 +24,14 @@ export function imgUrlPrefixer(
   throw new Error("Invalid params");
 }
 
-export function dateFormatter(date: string, type: "full-year"): number {
+export function dateFormatter(
+  date: string,
+  type: "full-year"
+): number | string {
+  if (date === "") {
+    return "Not available";
+  }
+
   if (type === "full-year") {
     return new Date(date).getFullYear();
   }
