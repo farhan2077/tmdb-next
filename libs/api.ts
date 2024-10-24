@@ -7,9 +7,21 @@ import { Movie } from "@/libs/types";
 const BASE_URL = TMDB_BASE_URL;
 const API_KEY = NEXT_PUBLIC_TMDB_API_KEY;
 
-async function getMovies({ page = 1 }): Promise<Movie[]> {
+interface FetchMovieQueryParams {
+  page: number;
+  searchTerm?: string;
+}
+
+export async function fetchMovies({
+  page = 1,
+  searchTerm,
+}: FetchMovieQueryParams): Promise<Movie[]> {
+  const queryPrefix = searchTerm
+    ? `${BASE_URL}/search/movie`
+    : `${BASE_URL}/movie/popular`;
+
   const response = await fetch(
-    `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`
+    `${queryPrefix}?api_key=${API_KEY}&page=${page}${searchTerm ? `&query=${encodeURIComponent(searchTerm)}` : ""}`
   );
   if (!response.ok) {
     throw new Error("Network response was not ok");
@@ -17,16 +29,3 @@ async function getMovies({ page = 1 }): Promise<Movie[]> {
   const data = await response.json();
   return data.results;
 }
-
-interface UserQuery {
-  pageSize: number;
-}
-
-export const useMovies = (query: UserQuery) =>
-  useInfiniteQuery<Movie[], Error>({
-    queryKey: ["movies", query],
-    queryFn: ({ pageParam = 1 }) => getMovies({ page: pageParam as number }),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) =>
-      lastPage.length > 0 ? allPages.length + 1 : undefined,
-  });

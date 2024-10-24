@@ -4,3 +4,8 @@ export interface Movie {
   poster_path: string;
   release_date: string;
 }
+
+export interface FetchMovieQueryParams {
+  page: number;
+  searchTerm?: string;
+}

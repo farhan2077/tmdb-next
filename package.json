@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.59.16",
+    "@uidotdev/usehooks": "^2.4.1",
     "clsx": "^2.1.1",
     "next": "14.2.16",
     "react": "^18",

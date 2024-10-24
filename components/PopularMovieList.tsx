@@ -1,18 +1,21 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
 
+import { useDebounce } from "@uidotdev/usehooks";
+
+import EmptyStatePlaceholder from "@/components/EmptyStatePlaceholder";
 import Spinner from "@/components/Spinner";
-import { useMovies } from "@/libs/api";
+import { useMovies } from "@/libs/queries";
 import { Movie } from "@/libs/types";
 import { cn, dateFormatter, imgUrlPrefixer } from "@/libs/utils";
 
 function MovieCardSkeleton() {
   return (
-    <div className="group relative animate-pulse overflow-hidden rounded-lg shadow-lg transition-shadow duration-300 hover:shadow-xl">
+    <div className="group relative animate-pulse overflow-hidden rounded-lg border border-gray-300 shadow-lg transition-shadow duration-300 hover:shadow-xl">
       <div className="relative aspect-[2/3]">
         <div className="h-full w-full bg-gray-200"></div>
       </div>
@@ -28,7 +31,7 @@ function MovieCard({ movie }: { movie: Movie }) {
   return (
     <Link
       href={`/movies/${movie.id}`}
-      className="group relative overflow-hidden rounded-lg shadow-lg transition-shadow duration-300 hover:shadow-xl"
+      className="group relative overflow-hidden rounded-lg border border-gray-100 shadow-lg transition-shadow duration-300 hover:shadow-xl"
     >
       <div className="relative aspect-[2/3]">
         <Image
@@ -53,27 +56,99 @@ function MovieCard({ movie }: { movie: Movie }) {
 }
 
 export default function PopularMovieList() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearch = useDebounce(searchTerm, 500);
+
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } =
-    useMovies({ pageSize: 1 });
+    useMovies({
+      page: 1,
+      searchTerm: debouncedSearch.length >= 3 ? debouncedSearch : "",
+    });
 
   if (isLoading)
     return (
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
+      <div>
+        <div className="mb-8">
+          <input
+            type="text"
+            value={searchTerm}
+            placeholder="Search for movies..."
+            disabled={true}
+            className="w-full rounded-lg border border-gray-200 bg-gray-100 px-4 py-2 focus:outline-none"
+          />
+        </div>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+        </div>
       </div>
     );
-  if (error) return <div>Error: {error.message}</div>;
-  if (!data) return <div>Error: Data not found</div>;
+
+  if (error)
+    return (
+      <EmptyStatePlaceholder
+        type="error"
+        title="Error"
+        message={`Error: ${error.message}`}
+      />
+    );
+
+  if (!data)
+    return (
+      <EmptyStatePlaceholder
+        type="empty-data"
+        title="Empty"
+        message="Data not found"
+      />
+    );
+
+  if (data.pages[0].length === 0)
+    return (
+      <div>
+        <div className="mb-5">
+          <input
+            id="search"
+            name="search"
+            type="search"
+            placeholder="Search for movies..."
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+            className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        {searchTerm ? (
+          <EmptyStatePlaceholder
+            type="empty-data"
+            title="Not found"
+            message={`Nothing found for "${searchTerm}". Try searching for something else.`}
+          />
+        ) : null}
+      </div>
+    );
 
   return (
     <div>
+      <div className="mb-8">
+        <input
+          id="search"
+          name="search"
+          type="search"
+          placeholder="Search for movies..."
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
+          className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {data.pages
           .flatMap((page) => page)
