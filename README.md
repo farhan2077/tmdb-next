@@ -2,11 +2,11 @@
 
 ## Todos
 
-- [ ] Build a responsive movie search and details app using Next.js 13/14 and the TMDB API.
+- [x] Build a responsive movie search and details app using Next.js 13/14 and the TMDB API.
 
 **Homepage:** `/`
 
-- [ ] Implement infinite scrolling or a load more button on the homepage (Client-Side Pagination)
+- [x] Implement infinite scrolling or a load more button on the homepage (Client-Side Pagination)
 - [ ] Search bar in homepage
 
 **Movie details page:** `/movies/[id]`

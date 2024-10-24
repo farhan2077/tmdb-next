@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
+import QueryProviders from "@/libs/QueryProviders";
+
 import "./globals.css";
 
 const geistSans = localFont({
@@ -22,9 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body
-        className={`${geistSans.variable} font-[family-name:var(--font-geist-sans)] antialiased`}
+        className={`${geistSans.variable} mx-auto w-full max-w-7xl px-4 font-[family-name:var(--font-geist-sans)] antialiased`}
       >
-        {children}
+        <QueryProviders>{children}</QueryProviders>
       </body>
     </html>
   );
