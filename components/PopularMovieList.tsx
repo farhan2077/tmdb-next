@@ -93,7 +93,7 @@ export default function PopularMovieList() {
           )}
           disabled={isFetchingNextPage}
         >
-          {!isFetchingNextPage ? (
+          {isFetchingNextPage ? (
             <>
               <Spinner color="text-white" />
               <span>Loading&#8230;</span>
