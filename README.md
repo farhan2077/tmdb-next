@@ -7,7 +7,7 @@
 **Homepage:** `/`
 
 - [x] Implement infinite scrolling or a load more button on the homepage (Client-Side Pagination)
-- [ ] Search bar in homepage
+- [x] Search bar in homepage
 
 **Movie details page:** `/movies/[id]`
 
