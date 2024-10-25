@@ -28,6 +28,8 @@ function MovieCardSkeleton() {
 }
 
 function MovieCard({ movie }: { movie: Movie }) {
+  const [isImageLoading, setImageLoading] = useState(true);
+
   return (
     <Link
       href={`/movies/${movie.id}`}
@@ -38,12 +40,23 @@ function MovieCard({ movie }: { movie: Movie }) {
           src={imgUrlPrefixer(movie.poster_path, "low")}
           alt={movie.title}
           fill
+          priority={false}
+          onLoad={() => setImageLoading(false)}
+          placeholder="blur"
+          blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+PGRlZnM+PGZpbHRlciBpZD0iYiI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMSIvPjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiM0YTkwZTIiIGZpbHRlcj0idXJsKCNiKSIvPjwvc3ZnPg=="
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover duration-300 ease-out group-hover:scale-105"
-          priority={false}
         />
       </div>
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[hsl(0,0%,10%)] to-transparent p-4">
+      <div
+        className={cn(
+          "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[hsl(0,0%,10%)] to-transparent p-4 transition-opacity duration-300",
+          {
+            "opacity-100": !isImageLoading,
+            "opacity-0": isImageLoading,
+          }
+        )}
+      >
         <h2 className="truncate text-base font-semibold text-white drop-shadow sm:translate-y-3 sm:text-lg sm:transition-transform sm:duration-300 sm:ease-out sm:group-hover:translate-y-0">
           {movie.title}
         </h2>
