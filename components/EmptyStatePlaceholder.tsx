@@ -6,14 +6,14 @@ export default function EmptyStatePlaceholder({
   type,
 }: {
   title: string;
-  message: string;
+  message: React.ReactNode;
   type: "error" | "empty-data" | "empty-search";
 }) {
   return (
     <div className="flex w-full justify-center">
       <div
         className={cn(
-          "flex flex-col items-center rounded-lg border px-12 py-8",
+          "flex w-full flex-col items-center rounded-lg border px-12 py-8 md:max-w-sm",
           {
             "border-red-100 bg-red-50": type === "error",
             "border-gray-100 bg-gray-50": type === "empty-data",
@@ -65,7 +65,9 @@ export default function EmptyStatePlaceholder({
         )}
         <p className="mb-1 mt-4 font-semibold text-gray-400">{title}</p>
         {message ? (
-          <div className="f text-sm text-gray-900">{message}</div>
+          <div className="text-pretty text-center text-sm text-gray-900">
+            {message}
+          </div>
         ) : null}
       </div>
     </div>
