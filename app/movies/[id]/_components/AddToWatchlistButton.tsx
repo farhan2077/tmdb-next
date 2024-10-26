@@ -50,7 +50,7 @@ function AddToWatchlistButton({
         className="relative h-10 w-10 overflow-hidden rounded-full"
       >
         <div
-          className="absolute inset-0 overflow-hidden rounded-full border border-white/10 bg-white/20 backdrop-blur"
+          className="absolute inset-0 overflow-hidden rounded-full border border-white/20 bg-white/10 backdrop-blur"
           aria-hidden="true"
         ></div>
         <div className="relative flex h-full w-full items-center justify-center">
