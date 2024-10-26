@@ -29,7 +29,7 @@
 - [x] React Hook Form for Search
 - [x] Dynamic Caching for API Calls
 - [x] Optimistic UI for Watchlist
-- [ ] Middleware for Authentication (protect `/watchlist`)
+- [x] Middleware for Authentication (protect `/watchlist`)
 
 ## Prerequisites
 

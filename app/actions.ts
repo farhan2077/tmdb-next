@@ -1,5 +1,8 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
+
 import { getPlaiceholder } from "plaiceholder";
 
 import { NEXT_PUBLIC_TMDB_API_KEY } from "@/env";
@@ -60,3 +63,24 @@ export const getImage = async (src: string) => {
     img: { src, height, width },
   };
 };
+
+export async function setDemoCookie() {
+  const oneDay = 24 * 60 * 60 * 1000;
+  cookies().set("demoAuthCookie", "deliciousRamen", {
+    secure: true,
+    httpOnly: true,
+    maxAge: oneDay,
+    path: "/",
+    sameSite: "lax",
+  });
+
+  revalidatePath("/login");
+  revalidatePath("/watchlist");
+}
+
+export async function removeDemoCookie() {
+  cookies().delete("demoAuthCookie");
+
+  revalidatePath("/login");
+  revalidatePath("/watchlist");
+}
