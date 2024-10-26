@@ -1,14 +1,18 @@
 "use client";
 
-import { useState } from "react";
-
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useDebounce } from "@uidotdev/usehooks";
+import { z } from "zod";
 
 import EmptyStatePlaceholder from "@/components/EmptyStatePlaceholder";
 import MovieCard from "@/components/MovieCard";
 import Spinner from "@/components/Spinner";
+import { searchSchema } from "@/libs/form-schma";
 import { useMovies } from "@/libs/queries";
 import { cn } from "@/libs/utils";
+
+type SearchFormValues = z.infer<typeof searchSchema>;
 
 function MovieCardSkeleton() {
   return (
@@ -25,7 +29,18 @@ function MovieCardSkeleton() {
 }
 
 export default function PopularMovieList() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const {
+    register,
+    watch,
+    formState: { errors },
+  } = useForm<SearchFormValues>({
+    resolver: zodResolver(searchSchema),
+    defaultValues: {
+      search: "",
+    },
+    mode: "onChange", // This will validate on change
+  });
+  const searchTerm = watch("search");
   const debouncedSearch = useDebounce(searchTerm, 500);
 
   const { data, isLoading, error, fetchNextPage, isFetchingNextPage } =
@@ -82,14 +97,12 @@ export default function PopularMovieList() {
       <div>
         <div className="mb-5">
           <input
+            autoFocus
             id="search"
-            name="search"
             type="search"
             placeholder="Search for movies..."
+            {...register("search")}
             value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-            }}
             className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -105,18 +118,21 @@ export default function PopularMovieList() {
 
   return (
     <div>
-      <div className="mb-8">
+      <div className="relative mb-8">
         <input
+          autoFocus
           id="search"
-          name="search"
           type="search"
           placeholder="Search for movies..."
+          {...register("search")}
           value={searchTerm}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-          }}
           className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
+        <div className="absolute">
+          {searchTerm && errors.search?.message ? (
+            <p className="mt-1 text-sm">{errors.search.message}</p>
+          ) : null}
+        </div>
       </div>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {data.pages
