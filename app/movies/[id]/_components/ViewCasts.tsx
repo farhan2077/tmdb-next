@@ -23,7 +23,7 @@ function ViewCasts({ casts }: { casts: Cast[] }) {
     <>
       <button
         onClick={openModal}
-        className="overflow-hidden rounded text-sm text-white/50 underline decoration-white/50 outline-none transition-colors hover:text-white"
+        className="overflow-hidden rounded text-sm text-white/50 underline decoration-white/50 outline-none transition-colors hover:text-white focus:ring-0 focus:ring-offset-0"
       >
         See all
       </button>

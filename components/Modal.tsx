@@ -95,12 +95,33 @@ export default function Modal({
               className="flex min-h-full items-center justify-center p-4 text-center [--scale-from:100%] [--scale-to:100%] [--slide-from:40px] [--slide-to:0px] sm:[--scale-from:90%] sm:[--scale-to:100%] sm:[--slide-from:0px] sm:[--slide-to:0px]"
             >
               <DialogPanel className="w-full max-w-screen-md transform overflow-hidden rounded-2xl bg-black p-4 text-left align-middle shadow-xl transition-all md:p-8">
-                <DialogTitle
-                  as="h2"
-                  className="mb-4 text-xl font-medium leading-6 text-white"
-                >
-                  {title}
-                </DialogTitle>
+                <div className="mb-4 flex items-center justify-between">
+                  <DialogTitle
+                    as="h2"
+                    className="text-xl font-medium leading-6 text-white"
+                  >
+                    {title}
+                  </DialogTitle>
+                  <button
+                    onClick={() => closeModal()}
+                    className="focus:ring-0 focus:ring-offset-0"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6 text-white"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18 18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
                 <Description
                   as="div"
                   className="relative max-h-[80vh] overflow-y-scroll"
