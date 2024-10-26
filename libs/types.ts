@@ -1,7 +1,7 @@
 export interface Movie {
   id: number;
   title: string;
-  poster_path: string;
+  poster_path: string | null;
   release_date: string;
 }
 
@@ -14,9 +14,9 @@ export interface MovieDetails {
   adult: boolean;
   original_language: string;
   title: string;
-  backdrop_path: string;
+  backdrop_path: string | null;
   overview: string;
-  poster_path: string;
+  poster_path: string | null;
   release_date: string;
   genres: Genre[];
 }
@@ -35,7 +35,7 @@ export interface MovieRecommendations {
   results: {
     id: number;
     title: string;
-    poster_path: string;
+    poster_path: string | null;
   }[];
 }
 

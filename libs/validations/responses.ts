@@ -4,7 +4,7 @@ export const MovieSchema = z
   .object({
     id: z.number(),
     title: z.string(),
-    poster_path: z.string(),
+    poster_path: z.string().nullable(),
     release_date: z.string(),
   })
   .passthrough();
@@ -28,9 +28,9 @@ export const MovieDetailsResponseSchema = z
     adult: z.boolean(),
     original_language: z.string(),
     title: z.string(),
-    backdrop_path: z.string(),
+    backdrop_path: z.string().nullable(),
     overview: z.string(),
-    poster_path: z.string(),
+    poster_path: z.string().nullable(),
     release_date: z.string(),
     genres: z.array(GenreSchema),
   })
@@ -57,7 +57,7 @@ export const MovieCastResponseSchema = z.object({
 const MovieRecommendationSchema = z.object({
   id: z.number(),
   title: z.string(),
-  poster_path: z.string(),
+  poster_path: z.string().nullable(),
 });
 
 // Define Zod schema for MovieRecommendations
