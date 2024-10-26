@@ -11,9 +11,9 @@
 
 **Movie details page:** `/movies/[id]`
 
-- [ ] Should be dynamic route
-- [ ] Use SSR with ISR
-- [ ] Show ecommendations (ISR)
+- [x] Should be dynamic route
+- [x] Use SSR with ISR
+- [x] Show ecommendations (ISR)
 
 **Favorites/Watchlist with Server Actions** `/watchlist`
 

@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body
-        className={`${geistSans.variable} mx-auto w-full max-w-7xl px-4 font-[family-name:var(--font-geist-sans)] antialiased`}
+        className={`${geistSans.variable} font-[family-name:var(--font-geist-sans)] antialiased`}
       >
         <QueryProviders>{children}</QueryProviders>
       </body>
