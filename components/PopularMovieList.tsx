@@ -189,11 +189,11 @@ export default function PopularMovieList() {
           )}
         </button> */}
         {/* just show a spinner during autoload */}
-        <button className="flex w-full justify-center py-10" aria-hidden="true">
+        <div className="flex w-full justify-center py-10" aria-hidden="true">
           {isFetchingNextPage ? (
             <Spinner color="text-blue-600" size="h-10 w-10" />
           ) : null}
-        </button>
+        </div>
       </div>
     </div>
   );
