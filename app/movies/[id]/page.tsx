@@ -107,9 +107,9 @@ export default async function MovieDetails({ params }: PageProps) {
               </div>
               <div className="order-5 mr-0 lg:mr-52">
                 <div className="mb-4 mt-8 flex items-center gap-2">
-                  <h3 className="font-semibold tracking-tight text-white">
+                  <h2 className="font-semibold tracking-tight text-white">
                     CASTS
-                  </h3>
+                  </h2>
                   <ViewCasts casts={movieMembers.cast} />
                 </div>
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-8">
@@ -142,9 +142,9 @@ export default async function MovieDetails({ params }: PageProps) {
         </div>
         <div className="-mt-[8.1rem] bg-black">
           <div className="mx-auto max-w-screen-xl px-4 text-white md:px-8">
-            <h3 className="pb-4 pt-8 font-semibold tracking-tight text-white md:pt-0">
+            <h2 className="pb-4 pt-8 font-semibold tracking-tight text-white md:pt-0">
               YOU MAY ALSO LIKE
-            </h3>
+            </h2>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-8">
               {movieRecommendations.results.map((movie) => {
                 return (

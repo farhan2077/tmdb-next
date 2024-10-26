@@ -24,11 +24,11 @@ export default function LoginForm({ initialLoggedIn = false }) {
   };
 
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-gray-100">
-      <div className="w-full max-w-sm rounded-xl bg-white p-6 shadow-md">
-        <h1 className="mb-4 text-center text-2xl font-bold">
-          {isLoggedIn ? "Already Logged In" : "Login"}
-        </h1>
+    <div className="flex min-h-dvh items-center justify-center bg-gray-100 dark:bg-black">
+      <div className="w-full max-w-sm rounded-xl bg-white p-6 shadow-md dark:bg-neutral-800">
+        <h2 className="mb-4 text-center text-2xl font-bold text-black dark:text-white">
+          {isLoggedIn ? "Already Logged In" : "Login now"}
+        </h2>
 
         {isLoggedIn ? (
           <button

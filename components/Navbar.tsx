@@ -17,6 +17,7 @@ function Navbar() {
       <PageWrapper>
         <div className="flex h-24 items-center justify-between">
           <Link
+            aria-label="Logo"
             href={"/"}
             className="outline-none focus:ring-0 focus:ring-offset-0"
           >
@@ -44,13 +45,15 @@ function Navbar() {
               ></path>
             </svg>
           </Link>
-          <h1 className="sr-only">
-            {pathname.includes("/watchlist")
-              ? "watchlist"
-              : pathname.startsWith("/movies")
-                ? "Movie details"
-                : "homepage"}
-          </h1>
+          {pathname.includes("/watchlist") ? (
+            <h1 className="sr-only">watchlist</h1>
+          ) : pathname.startsWith("/movies") ? null : pathname.startsWith(
+              "/login"
+            ) ? (
+            <h1 className="sr-only">demo login</h1>
+          ) : (
+            <h1 className="sr-only">homepage</h1>
+          )}
           <div
             className={cn("flex items-center gap-4", {
               "mr-14 md:mr-0": pathname.includes("movies"),

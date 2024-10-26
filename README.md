@@ -1,5 +1,13 @@
 # tmdb-task
 
+## Future improvements
+
+- More sophisticated colors for dark and light mode
+- Improve LCP
+- Improvement to error handling (capture errors w/ sentry)
+- Better code colocattion and overall structure
+- Improved accessibility
+
 ## Todos
 
 - [x] Build a responsive movie search and details app using Next.js 13/14 and the TMDB API.
