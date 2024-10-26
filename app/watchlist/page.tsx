@@ -2,6 +2,11 @@ import EmptyStatePlaceholder from "@/components/EmptyStatePlaceholder";
 import MovieCard from "@/components/MovieCard";
 import PageWrapper from "@/components/PageWrapper";
 import { movies } from "@/libs/stores/in-memory";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Watchlist",
+};
 
 export default function Watchlist() {
   return (

@@ -18,6 +18,20 @@ interface PageProps {
   params: { id: string };
 }
 
+export async function generateMetadata({ params }: PageProps) {
+  const { id } = params;
+  const movieDetails = await getMovieDetails(id);
+
+  if (!movieDetails) {
+    notFound();
+  }
+
+  return {
+    title: movieDetails.title,
+    description: movieDetails.overview,
+  };
+}
+
 export default async function MovieDetails({ params }: PageProps) {
   const { id } = params;
 
@@ -139,12 +153,12 @@ export default async function MovieDetails({ params }: PageProps) {
                     key={movie.id}
                     className="group rounded-lg"
                   >
-                    {/* {rc.id} */}
                     <div className="relative aspect-[4/5] h-auto w-full overflow-hidden rounded-lg border-2 border-white/0 transition-colors group-hover:border-white/50">
                       <Image
                         fill
                         src={imgUrlPrefixer(movie.poster_path, "low")}
                         alt={movie.title}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="h-full w-full overflow-hidden object-cover"
                       />
                     </div>
