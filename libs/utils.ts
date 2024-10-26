@@ -7,7 +7,7 @@ import {
 import { type MovieDetails } from "@/libs/types";
 
 export function imgUrlPrefixer(
-  imgPath: string,
+  imgPath: string | null,
   quality: "low" | "high"
 ): string {
   if (imgPath === null) {
