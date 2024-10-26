@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { dateFormatter, imgUrlPrefixer } from "@/libs/utils";
-import { movies } from "@/store";
 
 import {
   getImage,
@@ -59,8 +58,6 @@ export default async function MovieDetails({ params }: PageProps) {
             <div className="relative z-20 order-3 -mt-[8.1rem] flex w-full flex-col gap-4 bg-black px-4 md:order-1 md:mt-0 md:bg-transparent md:px-0">
               <h1 className="order-1 text-pretty text-center text-3xl font-semibold tracking-tighter text-white sm:text-left md:order-2 md:text-7xl">
                 {movieDetails.title}
-                <br />
-                {movies.length}
               </h1>
               <div className="order-2 flex w-full items-center justify-center sm:items-start sm:justify-start md:order-1">
                 <div className="flex w-fit items-center gap-1 text-sm md:text-base">
