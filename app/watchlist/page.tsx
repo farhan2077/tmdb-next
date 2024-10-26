@@ -5,11 +5,8 @@ import { movies } from "@/store";
 
 export default function Watchlist() {
   return (
-    <main>
+    <main className="pt-24">
       <PageWrapper>
-        <h1 className="my-8 text-center text-3xl font-bold">
-          Movies in watchlist
-        </h1>
         {movies.length === 0 ? (
           <EmptyStatePlaceholder
             type="empty-data"

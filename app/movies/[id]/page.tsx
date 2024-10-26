@@ -106,7 +106,7 @@ export default async function MovieDetails({ params }: PageProps) {
               </div>
             </div>
             <div className="relative order-1 aspect-[2/3] h-[60dvh] w-full overflow-hidden border-0 md:order-2 md:h-auto md:w-96 md:rounded-lg md:border-2 md:border-white/40">
-              <div className="absolute right-4 top-4 z-30">
+              <div className="absolute right-4 top-7 z-30 md:top-4">
                 <AddToWatchList movieDetails={movieDetails} />
               </div>
               <Image

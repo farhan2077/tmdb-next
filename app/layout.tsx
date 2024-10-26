@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
+import Navbar from "@/components/Navbar";
 import QueryProviders from "@/libs/QueryProviders";
 
 import "./globals.css";
@@ -24,8 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body
-        className={`${geistSans.variable} font-[family-name:var(--font-geist-sans)] antialiased`}
+        className={`${geistSans.variable} relative font-[family-name:var(--font-geist-sans)] antialiased`}
       >
+        <Navbar />
         <QueryProviders>{children}</QueryProviders>
       </body>
     </html>

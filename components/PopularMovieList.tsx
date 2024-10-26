@@ -118,7 +118,7 @@ export default function PopularMovieList() {
 
   return (
     <div>
-      <div className="relative mb-8">
+      <div className="relative mb-6">
         <input
           autoFocus
           id="search"
