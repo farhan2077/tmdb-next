@@ -21,7 +21,7 @@ export interface MovieDetails {
   genres: Genre[];
 }
 
-interface Cast {
+export interface Cast {
   id: number;
   name: string;
   profile_path: string;

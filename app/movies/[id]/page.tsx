@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import CastCard from "@/components/CastCard";
 import { dateFormatter, imgUrlPrefixer } from "@/libs/utils";
 
 import {
@@ -11,6 +12,7 @@ import {
   getMovieRecommendations,
 } from "@/app/actions";
 import AddToWatchList from "@/app/movies/[id]/_components/AddToWatchlist";
+import ViewCasts from "@/app/movies/[id]/_components/ViewCasts";
 
 interface PageProps {
   params: { id: string };
@@ -90,32 +92,15 @@ export default async function MovieDetails({ params }: PageProps) {
                 })}
               </div>
               <div className="order-5 mr-0 lg:mr-52">
-                <h3 className="mb-4 mt-8 font-semibold tracking-tight text-white">
-                  CASTS
-                </h3>
+                <div className="mb-4 mt-8 flex items-center gap-2">
+                  <h3 className="font-semibold tracking-tight text-white">
+                    CASTS
+                  </h3>
+                  <ViewCasts casts={movieMembers.cast} />
+                </div>
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-8">
-                  {movieMembers.cast.splice(0, 4).map((cast) => {
-                    return (
-                      <div
-                        key={cast.id}
-                        className="overflow-hidden rounded-lg border-2 border-white/50"
-                      >
-                        <div className="relative aspect-square h-auto w-full">
-                          <Image
-                            fill
-                            src={imgUrlPrefixer(cast.profile_path, "low")}
-                            className="h-full w-full overflow-hidden object-cover"
-                            alt={cast.name}
-                          />
-                        </div>
-                        <div className="relative">
-                          <div className="absolute inset-0 bg-white/20 backdrop-blur"></div>
-                          <p className="relative truncate px-3 py-2 text-sm text-white">
-                            {cast.name}
-                          </p>
-                        </div>
-                      </div>
-                    );
+                  {movieMembers.cast.slice(0, 4).map((cast) => {
+                    return <CastCard key={cast.id} cast={cast} />;
                   })}
                 </div>
               </div>
