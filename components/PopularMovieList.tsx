@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useDebounce } from "@uidotdev/usehooks";
+import { useDebounce, useIntersectionObserver } from "@uidotdev/usehooks";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -12,6 +12,7 @@ import Spinner from "@/components/Spinner";
 import { useMovies } from "@/libs/queries";
 import { cn } from "@/libs/utils";
 import { searchSchema } from "@/libs/validations/forms";
+import { useEffect } from "react";
 
 type SearchFormValues = z.infer<typeof searchSchema>;
 
@@ -44,11 +45,31 @@ export default function PopularMovieList() {
   const searchTerm = watch("search");
   const debouncedSearch = useDebounce(searchTerm, 500);
 
-  const { data, isLoading, error, fetchNextPage, isFetchingNextPage } =
-    useMovies({
-      page: 1,
-      searchTerm: debouncedSearch.length >= 3 ? debouncedSearch : "",
-    });
+  const {
+    data,
+    isLoading,
+    error,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useMovies({
+    page: 1,
+    searchTerm: debouncedSearch.length >= 3 ? debouncedSearch : "",
+  });
+
+  // ref of the loading element
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0,
+    root: null,
+    rootMargin: "100px",
+  });
+
+  // fetch next page when the loader element is visible
+  useEffect(() => {
+    if (entry?.isIntersecting && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [entry?.isIntersecting, fetchNextPage, hasNextPage, isFetchingNextPage]);
 
   if (isLoading)
     return (
@@ -145,8 +166,9 @@ export default function PopularMovieList() {
             <MovieCard key={movie.id} movie={movie} />
           ))}
       </div>
-      <div className="flex w-full justify-center py-10">
-        <button
+      <div className="flex w-full justify-center py-10" ref={ref}>
+        {/* manaully load more */}
+        {/* <button
           onClick={() => fetchNextPage()}
           className={cn(
             "flex h-12 w-fit items-center justify-between rounded-lg px-6 font-semibold text-white",
@@ -166,6 +188,12 @@ export default function PopularMovieList() {
           ) : (
             "Load more"
           )}
+        </button> */}
+        {/* just show a spinner during autoload */}
+        <button className="flex w-full justify-center py-10">
+          {isFetchingNextPage ? (
+            <Spinner color="text-blue-600" size="h-10 w-10" />
+          ) : null}
         </button>
       </div>
     </div>

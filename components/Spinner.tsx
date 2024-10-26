@@ -2,10 +2,16 @@ import { type ClassValue } from "clsx";
 
 import { cn } from "@/libs/utils";
 
-export default function Spinner({ color }: { color: ClassValue }) {
+export default function Spinner({
+  size,
+  color,
+}: {
+  size: ClassValue;
+  color: ClassValue;
+}) {
   return (
     <svg
-      className={cn("mr-3 h-5 w-5 animate-spin", color)}
+      className={cn("animate-spin", color, size)}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
