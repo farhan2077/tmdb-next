@@ -1,7 +1,8 @@
 "use client"; // Error components must be Client Components
 
-import Link from "next/link";
 import { useEffect } from "react";
+
+import Link from "next/link";
 
 export default function Error({
   error,
@@ -11,7 +12,8 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
+    // log the error to an error reporting service
+    // eslint-disable-next-line no-console
     console.error(error);
   }, [error]);
 

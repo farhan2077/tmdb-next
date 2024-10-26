@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { dateFormatter, imgUrlPrefixer } from "@/libs/utils";
+import { movies } from "@/store";
 
 import {
   getImage,
@@ -9,7 +11,7 @@ import {
   getMovieMembers,
   getMovieRecommendations,
 } from "@/app/actions";
-import Link from "next/link";
+import AddToWatchList from "@/app/movies/[id]/_components/AddToWatchlist";
 
 interface PageProps {
   params: { id: string };
@@ -57,6 +59,8 @@ export default async function MovieDetails({ params }: PageProps) {
             <div className="relative z-20 order-3 -mt-[8.1rem] flex w-full flex-col gap-4 bg-black px-4 md:order-1 md:mt-0 md:bg-transparent md:px-0">
               <h1 className="order-1 text-pretty text-center text-3xl font-semibold tracking-tighter text-white sm:text-left md:order-2 md:text-7xl">
                 {movieDetails.title}
+                <br />
+                {movies.length}
               </h1>
               <div className="order-2 flex w-full items-center justify-center sm:items-start sm:justify-start md:order-1">
                 <div className="flex w-fit items-center gap-1 text-sm md:text-base">
@@ -89,7 +93,9 @@ export default async function MovieDetails({ params }: PageProps) {
                 })}
               </div>
               <div className="order-5 mr-0 lg:mr-52">
-                <h3 className="mb-4 mt-8 font-semibold text-white">CASTS</h3>
+                <h3 className="mb-4 mt-8 font-semibold tracking-tight text-white">
+                  CASTS
+                </h3>
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-8">
                   {movieMembers.cast.splice(0, 4).map((cast) => {
                     return (
@@ -117,14 +123,17 @@ export default async function MovieDetails({ params }: PageProps) {
                 </div>
               </div>
             </div>
-            <div className="border-0md:order-2 relative order-1 aspect-[2/3] h-[60dvh] w-full overflow-hidden md:h-auto md:w-96 md:rounded-lg md:border-2 md:border-white/40">
+            <div className="relative order-1 aspect-[2/3] h-[60dvh] w-full overflow-hidden border-0 md:order-2 md:h-auto md:w-96 md:rounded-lg md:border-2 md:border-white/40">
+              <div className="absolute right-4 top-4 z-30">
+                <AddToWatchList movieDetails={movieDetails} />
+              </div>
               <Image
                 src={imgUrlPrefixer(movieDetails.poster_path, "low")}
                 alt={movieDetails.title}
                 fill
                 placeholder="empty"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="z-20 object-cover duration-300 ease-out hover:scale-105"
+                className="z-20 object-cover"
               />
             </div>
           </div>
@@ -137,7 +146,7 @@ export default async function MovieDetails({ params }: PageProps) {
         </div>
         <div className="-mt-[8.1rem] bg-black">
           <div className="mx-auto max-w-screen-xl px-4 text-white md:px-8">
-            <h3 className="pb-4 pt-8 font-semibold text-white md:pt-0">
+            <h3 className="pb-4 pt-8 font-semibold tracking-tight text-white md:pt-0">
               YOU MAY ALSO LIKE
             </h3>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-8">
@@ -164,7 +173,7 @@ export default async function MovieDetails({ params }: PageProps) {
             </div>
           </div>
         </div>
-        <div className="bg-black py-10" aria-hidden="true">
+        <div className="-mt-0.5 bg-black py-10" aria-hidden="true">
           &nbsp;
         </div>
       </main>

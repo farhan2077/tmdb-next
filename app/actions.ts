@@ -6,8 +6,8 @@ import { NEXT_PUBLIC_TMDB_API_KEY } from "@/env";
 import { TMDB_BASE_URL } from "@/libs/constants";
 import {
   type MovieDetails,
-  MovieMembers,
-  MovieRecommendations,
+  type MovieMembers,
+  type MovieRecommendations,
 } from "@/libs/types";
 
 const BASE_URL = TMDB_BASE_URL;
@@ -25,7 +25,7 @@ export async function getMovieMembers(id: string): Promise<MovieMembers> {
   const res = await fetch(
     `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`,
     {
-      next: { revalidate: 60 },
+      cache: "force-cache",
     }
   );
   if (!res.ok) throw new Error("Failed to fetch movie cast details");

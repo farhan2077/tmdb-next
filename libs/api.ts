@@ -1,5 +1,3 @@
-import { useInfiniteQuery } from "@tanstack/react-query"; // Ensure this is correct
-
 import { NEXT_PUBLIC_TMDB_API_KEY } from "@/env";
 import { TMDB_BASE_URL } from "@/libs/constants";
 import { Movie } from "@/libs/types";

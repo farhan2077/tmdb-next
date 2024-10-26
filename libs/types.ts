@@ -9,12 +9,15 @@ interface Genre {
   id: number;
   name: string;
 }
-export interface MovieDetails extends Movie {
+export interface MovieDetails {
+  id: number;
   adult: boolean;
   original_language: string;
   title: string;
   backdrop_path: string;
   overview: string;
+  poster_path: string;
+  release_date: string;
   genres: Genre[];
 }
 

@@ -17,18 +17,18 @@
 
 **Favorites/Watchlist with Server Actions** `/watchlist`
 
-- [ ] Using server action add to Favorites/Watchlist (store in localstorage)
+- [x] Using server action add to Favorites/Watchlist (store in localstorage)
 
 **OPTIONAL**
 
-- [ ] Dark mode toggle and store it using global state (zustand or react context)
+- [ ] Dark mode toggle or watchlist and store it using global state (zustand or react context)
 
 **EXTRA (ADVANCED)**
 
 - [ ] Zod for API Response Validation
 - [ ] React Hook Form for Search
-- [ ] Dynamic Caching for API Calls
-- [ ] Optimistic UI for Watchlist
+- [x] Dynamic Caching for API Calls
+- [x] Optimistic UI for Watchlist
 - [ ] Middleware for Authentication (protect `/watchlist`)
 
 ## Prerequisites
