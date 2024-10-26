@@ -4,10 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import PageWrapper from "@/components/PageWrapper";
+import { useCounterStore } from "@/libs/stores/counter-store";
 import { cn } from "@/libs/utils";
 
 function Navbar() {
   const pathname = usePathname();
+  const { count } = useCounterStore();
 
   return (
     <nav className="absolute top-0 z-10 w-full">
@@ -50,13 +52,13 @@ function Navbar() {
           </h1>
           <Link
             href={"/watchlist"}
-            className={`font-semibold outline-none transition-colors duration-200 focus:ring-0 focus:ring-offset-0 ${
+            className={`font-semibold tabular-nums outline-none transition-colors duration-200 focus:ring-0 focus:ring-offset-0 ${
               pathname.includes("movies")
                 ? "mr-14 text-white md:mr-0"
                 : "text-black"
             }`}
           >
-            WATCHLIST
+            WATCHLIST{count > 0 ? <> • {count}</> : null}
           </Link>
         </div>
       </PageWrapper>

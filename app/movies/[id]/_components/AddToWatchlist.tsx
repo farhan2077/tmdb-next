@@ -1,6 +1,6 @@
+import { movies } from "@/libs/stores/in-memory";
 import { type MovieDetails } from "@/libs/types";
 import { isMovieInWatchList, toggleFavouriteMovie } from "@/libs/utils";
-import { movies } from "@/store";
 
 import AddToWatchlistButton from "@/app/movies/[id]/_components/AddToWatchlistButton";
 

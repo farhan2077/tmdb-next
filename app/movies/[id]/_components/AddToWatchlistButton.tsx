@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
+import { useCounterStore } from "@/libs/stores/counter-store";
 import { cn } from "@/libs/utils";
 
 interface AddToWatchlistButtonProps {
@@ -16,11 +17,18 @@ function AddToWatchlistButton({
   toggleFavouriteMovieAction,
 }: AddToWatchlistButtonProps) {
   const router = useRouter();
+  const { increment, decrement } = useCounterStore();
   const [optimisticIsFav, setOptimisticIsFav] = useState(initialIsFav);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setOptimisticIsFav(!optimisticIsFav);
+
+    if (optimisticIsFav) {
+      decrement();
+    } else {
+      increment();
+    }
 
     try {
       await toggleFavouriteMovieAction();

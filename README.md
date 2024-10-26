@@ -21,7 +21,8 @@
 
 **OPTIONAL**
 
-- [ ] Dark mode toggle or watchlist and store it using global state (zustand or react context)
+- [ ] Dark mode toggle
+- [x] Global state using context or zustand
 
 **EXTRA (ADVANCED)**
 
