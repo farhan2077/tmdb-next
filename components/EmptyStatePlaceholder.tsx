@@ -13,7 +13,7 @@ export default function EmptyStatePlaceholder({
     <div className="flex w-full justify-center">
       <div
         className={cn(
-          "flex w-full flex-col items-center rounded-lg border px-12 py-8 md:max-w-sm",
+          "flex w-full flex-col items-center rounded-lg border border-neutral-200 bg-white px-12 py-8 md:max-w-sm dark:border-neutral-700 dark:bg-neutral-900",
           {
             "border-red-100 bg-red-50": type === "error",
             "border-gray-100 bg-gray-50": type === "empty-data",
@@ -26,7 +26,7 @@ export default function EmptyStatePlaceholder({
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            className="size-10 stroke-gray-600"
+            className="size-10 stroke-gray-600 dark:stroke-gray-500"
           >
             <path
               strokeLinecap="round"
@@ -41,7 +41,7 @@ export default function EmptyStatePlaceholder({
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            className="size-10 stroke-gray-600"
+            className="size-10 stroke-gray-600 dark:stroke-gray-500"
           >
             <path
               strokeLinecap="round"
@@ -54,7 +54,7 @@ export default function EmptyStatePlaceholder({
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            className="size-10 fill-red-600"
+            className="size-10 fill-red-600 dark:fill-red-500"
           >
             <path
               fillRule="evenodd"
@@ -63,9 +63,11 @@ export default function EmptyStatePlaceholder({
             />
           </svg>
         )}
-        <p className="mb-1 mt-4 font-semibold text-gray-400">{title}</p>
+        <p className="mb-1 mt-4 font-semibold text-gray-400 dark:text-gray-500">
+          {title}
+        </p>
         {message ? (
-          <div className="text-pretty text-center text-sm text-gray-900">
+          <div className="text-pretty text-center text-sm text-gray-900 dark:text-gray-100">
             {message}
           </div>
         ) : null}

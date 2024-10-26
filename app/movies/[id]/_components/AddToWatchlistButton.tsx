@@ -49,7 +49,10 @@ function AddToWatchlistButton({
         type="submit"
         className="relative h-10 w-10 overflow-hidden rounded-full"
       >
-        <div className="absolute inset-0 overflow-hidden rounded-full border border-white/10 bg-white/20 backdrop-blur"></div>
+        <div
+          className="absolute inset-0 overflow-hidden rounded-full border border-white/10 bg-white/20 backdrop-blur"
+          aria-hidden="true"
+        ></div>
         <div className="relative flex h-full w-full items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -21,7 +21,7 @@
 
 **OPTIONAL**
 
-- [ ] Dark mode toggle
+- [x] Dark mode toggle
 - [x] Global state using context or zustand
 
 **EXTRA (ADVANCED)**

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { ThemeProvider } from "next-themes";
 
 import { Toaster } from "sonner";
 
 import Navbar from "@/components/Navbar";
-import QueryProviders from "@/libs/QueryProviders";
+import QueryProviders from "@/libs/query-provides";
 
 import "./globals.css";
 
@@ -25,13 +26,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} relative font-[family-name:var(--font-geist-sans)] antialiased`}
       >
-        <Toaster position="top-center" richColors />
-        <Navbar />
-        <QueryProviders>{children}</QueryProviders>
+        <ThemeProvider attribute="class" defaultTheme="system">
+          <Toaster position="top-center" richColors />
+          <Navbar />
+          <QueryProviders>{children}</QueryProviders>
+        </ThemeProvider>
       </body>
     </html>
   );

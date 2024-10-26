@@ -3,7 +3,7 @@ import PopularMovieList from "@/components/PopularMovieList";
 
 export default async function Home() {
   return (
-    <main className="pt-24">
+    <main className="bg-white pt-24 dark:bg-black">
       <PageWrapper>
         <PopularMovieList />
       </PageWrapper>

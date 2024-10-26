@@ -59,7 +59,7 @@ export default function PopularMovieList() {
             value={searchTerm}
             placeholder="Search for movies..."
             disabled={true}
-            className="w-full rounded-lg border border-gray-200 bg-gray-100 px-4 py-2 focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 bg-gray-100 px-4 py-2 focus:outline-none dark:border-gray-800 dark:bg-gray-900"
           />
         </div>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
@@ -107,7 +107,7 @@ export default function PopularMovieList() {
             placeholder="Search for movies..."
             {...register("search")}
             value={searchTerm}
-            className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700"
           />
         </div>
         {searchTerm ? (
@@ -122,7 +122,7 @@ export default function PopularMovieList() {
 
   return (
     <div>
-      <div className="relative mb-6">
+      <div className="relative mb-8">
         <input
           autoFocus
           id="search"
@@ -130,7 +130,7 @@ export default function PopularMovieList() {
           placeholder="Search for movies..."
           {...register("search")}
           value={searchTerm}
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700"
         />
         <div className="absolute">
           {searchTerm && errors.search?.message ? (
@@ -145,13 +145,13 @@ export default function PopularMovieList() {
             <MovieCard key={movie.id} movie={movie} />
           ))}
       </div>
-      <div className="my-10 flex w-full justify-center">
+      <div className="flex w-full justify-center py-10">
         <button
           onClick={() => fetchNextPage()}
           className={cn(
             "flex h-12 w-fit items-center justify-between rounded-lg px-6 font-semibold text-white",
             {
-              "bg-blue-700 shadow-md shadow-blue-100 hover:bg-blue-600":
+              "bg-blue-600 shadow-md shadow-blue-100 hover:bg-blue-700 dark:bg-blue-700 dark:shadow-gray-900 dark:hover:bg-blue-600 dark:hover:shadow-gray-800":
                 !isFetchingNextPage,
               "cursor-not-allowed bg-gray-500": isFetchingNextPage,
             }

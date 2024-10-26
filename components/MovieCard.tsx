@@ -14,7 +14,7 @@ function MovieCard({ movie }: { movie: Movie | MovieDetails }) {
   return (
     <Link
       href={`/movies/${movie.id}`}
-      className="group relative overflow-hidden rounded-lg border border-gray-100 shadow-lg transition-shadow duration-300 hover:shadow-xl"
+      className="group relative overflow-hidden rounded-lg border border-gray-100 shadow-lg transition-shadow duration-300 hover:shadow-xl dark:border-gray-700"
     >
       <div className="relative aspect-[2/3]">
         <Image
@@ -23,8 +23,7 @@ function MovieCard({ movie }: { movie: Movie | MovieDetails }) {
           fill
           priority={false}
           onLoad={() => setImageLoading(false)}
-          placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkiKurBwACnwFdJzWtQgAAAABJRU5ErkJggg=="
+          placeholder="empty"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover duration-300 ease-out group-hover:scale-105"
         />
