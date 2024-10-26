@@ -12,6 +12,11 @@ import {
   type MovieMembers,
   type MovieRecommendations,
 } from "@/libs/types";
+import {
+  MovieCastResponseSchema,
+  MovieDetailsResponseSchema,
+  MovieRecommendationsResponseSchema,
+} from "@/libs/validations/responses";
 
 const BASE_URL = TMDB_BASE_URL;
 const API_KEY = NEXT_PUBLIC_TMDB_API_KEY;
@@ -21,7 +26,11 @@ export async function getMovieDetails(id: string): Promise<MovieDetails> {
     next: { revalidate: 60 },
   });
   if (!res.ok) throw new Error("Failed to fetch movie details");
-  return res.json();
+
+  const data = await res.json();
+  const parsedData = MovieDetailsResponseSchema.parse(data);
+
+  return parsedData;
 }
 
 export async function getMovieMembers(id: string): Promise<MovieMembers> {
@@ -32,7 +41,10 @@ export async function getMovieMembers(id: string): Promise<MovieMembers> {
     }
   );
   if (!res.ok) throw new Error("Failed to fetch movie cast details");
-  return res.json();
+
+  const data = await res.json();
+  const parsedData = MovieCastResponseSchema.parse(data);
+  return parsedData;
 }
 
 export async function getMovieRecommendations(
@@ -45,7 +57,10 @@ export async function getMovieRecommendations(
     }
   );
   if (!res.ok) throw new Error("Failed to fetch related movie recommendations");
-  return res.json();
+
+  const data = await res.json();
+  const parsedData = MovieRecommendationsResponseSchema.parse(data);
+  return parsedData;
 }
 
 export const getImage = async (src: string) => {

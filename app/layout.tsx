@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
+import { Toaster } from "sonner";
+
 import Navbar from "@/components/Navbar";
 import QueryProviders from "@/libs/QueryProviders";
 
@@ -27,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} relative font-[family-name:var(--font-geist-sans)] antialiased`}
       >
+        <Toaster position="top-center" richColors />
         <Navbar />
         <QueryProviders>{children}</QueryProviders>
       </body>

@@ -24,7 +24,7 @@ export interface MovieDetails {
 export interface Cast {
   id: number;
   name: string;
-  profile_path: string;
+  profile_path: string | null;
 }
 
 export interface MovieMembers {

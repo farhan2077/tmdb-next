@@ -3,14 +3,15 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDebounce } from "@uidotdev/usehooks";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import EmptyStatePlaceholder from "@/components/EmptyStatePlaceholder";
 import MovieCard from "@/components/MovieCard";
 import Spinner from "@/components/Spinner";
-import { searchSchema } from "@/libs/form-schma";
 import { useMovies } from "@/libs/queries";
 import { cn } from "@/libs/utils";
+import { searchSchema } from "@/libs/validations/forms";
 
 type SearchFormValues = z.infer<typeof searchSchema>;
 
@@ -74,7 +75,9 @@ export default function PopularMovieList() {
       </div>
     );
 
-  if (error)
+  if (error) {
+    toast.error(`Error fetching movies: ${error.message}`);
+
     return (
       <EmptyStatePlaceholder
         type="error"
@@ -82,6 +85,7 @@ export default function PopularMovieList() {
         message={`Error: ${error.message}`}
       />
     );
+  }
 
   if (!data)
     return (

@@ -26,7 +26,7 @@
 
 **EXTRA (ADVANCED)**
 
-- [ ] Zod for API Response Validation
+- [x] Zod for API Response Validation
 - [x] React Hook Form for Search
 - [x] Dynamic Caching for API Calls
 - [x] Optimistic UI for Watchlist
