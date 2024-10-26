@@ -43,7 +43,7 @@ function MovieCard({ movie }: { movie: Movie }) {
           priority={false}
           onLoad={() => setImageLoading(false)}
           placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCI+PGRlZnM+PGZpbHRlciBpZD0iYiI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMSIvPjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiM0YTkwZTIiIGZpbHRlcj0idXJsKCNiKSIvPjwvc3ZnPg=="
+          blurDataURL="data:image/svg+xml;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkiKurBwACnwFdJzWtQgAAAABJRU5ErkJggg=="
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover duration-300 ease-out group-hover:scale-105"
         />
