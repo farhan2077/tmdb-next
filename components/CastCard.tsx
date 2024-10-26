@@ -11,6 +11,7 @@ function CastCard({ cast }: { cast: Cast }) {
           fill
           src={imgUrlPrefixer(cast.profile_path, "low")}
           className="h-full w-full overflow-hidden object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt={cast.name}
         />
       </div>
