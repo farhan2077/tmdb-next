@@ -10,7 +10,6 @@ import EmptyStatePlaceholder from "@/components/EmptyStatePlaceholder";
 import MovieCard from "@/components/MovieCard";
 import Spinner from "@/components/Spinner";
 import { useMovies } from "@/libs/queries";
-import { cn } from "@/libs/utils";
 import { searchSchema } from "@/libs/validations/forms";
 import { useEffect } from "react";
 
