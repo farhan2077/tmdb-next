@@ -1,5 +1,10 @@
 # tmdb-task
 
+## Important links
+
+- [Live link](https://tmdb-task-live.vercel.app/)
+- [Pagespeed insight](https://pagespeed.web.dev/analysis/https-tmdb-task-live-vercel-app/jryjd4yokz?form_factor=desktop)
+
 ## Future improvements
 
 - More sophisticated colors for dark and light mode
