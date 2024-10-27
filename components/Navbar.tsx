@@ -13,13 +13,13 @@ function Navbar() {
   const { count } = useCounterStore();
 
   return (
-    <nav className="absolute top-0 z-10 w-full">
+    <nav className="absolute top-0 w-full">
       <PageWrapper>
         <div className="flex h-24 items-center justify-between">
           <Link
             aria-label="Logo"
             href={"/"}
-            className="outline-none focus:ring-0 focus:ring-offset-0"
+            className="z-10 outline-none focus:ring-0 focus:ring-offset-0"
           >
             <svg
               id="logo-70"
@@ -61,7 +61,7 @@ function Navbar() {
           >
             <Link
               href={"/watchlist"}
-              className={`font-semibold tabular-nums outline-none transition-colors duration-200 focus:ring-0 focus:ring-offset-0 ${
+              className={`z-10 font-semibold tabular-nums outline-none drop-shadow transition-colors duration-200 focus:ring-0 focus:ring-offset-0 ${
                 pathname.includes("movies")
                   ? "text-white"
                   : "text-black dark:text-white"
