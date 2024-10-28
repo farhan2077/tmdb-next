@@ -122,7 +122,6 @@ export default function PopularMovieList() {
       <div>
         <div className="mb-5">
           <input
-            autoFocus
             id="search"
             type="search"
             placeholder="Search for movies..."
@@ -145,7 +144,6 @@ export default function PopularMovieList() {
     <div>
       <div className="relative mb-8">
         <input
-          autoFocus
           id="search"
           type="search"
           placeholder="Search for movies..."
