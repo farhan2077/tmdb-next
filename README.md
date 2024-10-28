@@ -10,6 +10,7 @@
 - More sophisticated colors for dark and light mode
 - Improve LCP
 - Improvement to error handling (capture errors w/ sentry)
+- Better loading UI
 - Better code colocattion and overall structure
 - Improved accessibility
 

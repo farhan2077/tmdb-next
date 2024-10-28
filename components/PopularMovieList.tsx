@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDebounce, useIntersectionObserver } from "@uidotdev/usehooks";
@@ -11,7 +13,6 @@ import MovieCard from "@/components/MovieCard";
 import Spinner from "@/components/Spinner";
 import { useMovies } from "@/libs/queries";
 import { searchSchema } from "@/libs/validations/forms";
-import { useEffect } from "react";
 
 type SearchFormValues = z.infer<typeof searchSchema>;
 

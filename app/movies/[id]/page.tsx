@@ -90,7 +90,7 @@ export default async function MovieDetails({ params }: PageProps) {
                   </span>
                 </div>
               </div>
-              <p className="order-3 max-w-xl text-pretty text-sm text-white md:text-left md:text-lg">
+              <p className="order-3 line-clamp-3 max-w-xl text-pretty text-sm text-white md:text-left md:text-lg">
                 {movieDetails.overview}
               </p>
               <div className="order-4 flex gap-4">
