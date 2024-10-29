@@ -60,9 +60,7 @@ export function toggleFavouriteMovie(
 
   if (index !== -1) {
     array.splice(index, 1);
-    return "fill-rose-500 stroke-rose-500";
   } else {
     array.push(item);
-    return "stroke-rose-500 fill-rose-50";
   }
 }
