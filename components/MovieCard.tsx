@@ -22,10 +22,16 @@ function MovieCard({ movie }: { movie: Movie | MovieDetails }) {
           alt={movie.title}
           fill
           priority={false}
-          onLoad={() => setImageLoading(false)}
           placeholder="empty"
+          onLoad={() => setImageLoading(false)}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover duration-300 ease-out group-hover:scale-105"
+          className={cn(
+            "object-cover duration-300 ease-out group-hover:scale-105",
+            {
+              "scale-110 blur-2xl grayscale": isImageLoading,
+              "scale-100 blur-0 grayscale-0": !isImageLoading,
+            }
+          )}
         />
       </div>
       <div

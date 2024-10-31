@@ -31,12 +31,14 @@ export interface MovieMembers {
   cast: Cast[];
 }
 
+export interface RecommendedMovie {
+  id: number;
+  title: string;
+  poster_path: string | null;
+}
+
 export interface MovieRecommendations {
-  results: {
-    id: number;
-    title: string;
-    poster_path: string | null;
-  }[];
+  results: RecommendedMovie[];
 }
 
 export interface FetchMovieQueryParams {

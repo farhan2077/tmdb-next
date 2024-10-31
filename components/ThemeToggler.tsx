@@ -23,7 +23,7 @@ const ThemeToggler = () => {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       aria-label="Toggle theme"
       className={cn(
-        "relative h-10 w-10 overflow-hidden rounded-full outline-none focus:ring-0 focus:ring-offset-0"
+        "relative z-10 h-10 w-10 overflow-hidden rounded-full outline-none focus:ring-0 focus:ring-offset-0"
       )}
     >
       <div
