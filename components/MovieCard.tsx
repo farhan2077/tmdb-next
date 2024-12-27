@@ -32,6 +32,7 @@ function MovieCard({ movie }: { movie: Movie | MovieDetails }) {
               "scale-100 blur-0 grayscale-0": !isImageLoading,
             }
           )}
+          unoptimized={true}
         />
       </div>
       <div

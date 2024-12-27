@@ -23,6 +23,7 @@ function CastCard({ cast }: { cast: Cast }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt={cast.name}
           onLoad={() => setImageLoading(false)}
+          unoptimized={true}
         />
       </div>
       <div className="relative">

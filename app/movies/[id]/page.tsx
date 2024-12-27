@@ -57,6 +57,7 @@ export default async function MovieDetails({ params }: PageProps) {
           blurDataURL={backdropImage.base64}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="-z-10 hidden min-h-dvh object-cover grayscale md:block"
+          unoptimized={true}
         />
         <div className="mx-auto flex max-w-full translate-y-0 flex-col items-center justify-between gap-0 px-0 md:h-dvh md:max-w-screen-xl md:flex-row md:gap-8 md:px-8">
           <div
@@ -117,6 +118,7 @@ export default async function MovieDetails({ params }: PageProps) {
               blurDataURL={posterImage.base64}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="z-20 object-cover"
+              unoptimized={true}
             />
           </div>
         </div>

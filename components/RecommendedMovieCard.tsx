@@ -28,6 +28,7 @@ function RecommendedMovieCard({
             "scale-110 blur-2xl grayscale": isImageLoading,
             "scale-100 blur-0 grayscale-0": !isImageLoading,
           })}
+          unoptimized={true}
         />
       </div>
       <p className="mt-3 truncate">{recommendedMovie.title}</p>
